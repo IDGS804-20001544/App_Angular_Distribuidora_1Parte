@@ -1,0 +1,53 @@
+<div class="page-wrapper">
+    <div class="container-fluid animated fadeIn">
+        <div class="row page-titles">
+            <div class="col-md-5 align-self-center">
+                <h3 class="text-themecolor">Registrar Cambrillón</h3>
+            </div>
+            <div class="">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="form-body">
+                            <h3 class="card-title">Solicitud de Datos del Cambrillón</h3>
+                            <form [formGroup]="cambreForm" (ngSubmit)="agregarCambrillon()">
+                            <hr>
+                            <div class="row p-t-20">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">Nombre</label>
+                                        <input type="text" class="form-control" name="nombre" formControlName="nombre" placeholder="Nombre Usuario">
+                                        <div *ngIf="cambreForm.get('nombre')?.invalid && (cambreForm.get('nombre')?.dirty || cambreForm.get('nombre')?.touched)" class="text-danger">
+                                            Falta rellenar nombre
+                                        </div>           
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">Horma</label>
+                                        <select class="form-control" name="horma_id" formControlName="horma_id">
+                                            <option value="" disabled >Seleccione una horma</option>
+                                            <option *ngFor="let datos of hormas" value="{{datos.id}}">{{datos.nombre}}</option>           
+                                    </select>
+                                    <div *ngIf="cambreForm.get('horma_id')?.invalid && (cambreForm.get('horma_id')?.dirty || cambreForm.get('horma_id')?.touched)" class="text-danger">
+                                        Falta rellenar horma
+                                    </div>        
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-success" (click)="agregarCambrillon();" [disabled]="cambreForm.invalid"><i class="fa fa-check"></i> Guardar </button> 
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>   
+                            

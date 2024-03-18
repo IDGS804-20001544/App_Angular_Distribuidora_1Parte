@@ -1,0 +1,88 @@
+<div class="page-wrapper">
+    <div class="container-fluid animated fadeIn">
+        <div class="row page-titles">
+            <div class="col-md-5 align-self-center">
+                <h3 class="text-themecolor">Registrar Cliente</h3>
+            </div>
+            <div class="">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="form-body">
+                            <h3 class="card-title">Solicitud de Datos del Cliente</h3>
+                            <hr>
+                            <form [formGroup]="clientesForm" (ngSubmit)="agregarCliente()">
+                            <div class="row p-t-20">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">Código</label>
+                                        <input type="text" class="form-control" name="codigo" formControlName="codigo" placeholder="Nombre Usuario">
+                                        <div *ngIf="clientesForm.get('codigo')?.invalid && (clientesForm.get('codigo')?.dirty || clientesForm.get('codigo')?.touched)" class="text-danger">
+                                            Falta rellenar codigo
+                                        </div>           
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">Razón Social</label>
+                                        <input type="text" class="form-control" name="razonSocial" formControlName="razonSocial" placeholder="1234os">
+                                        <div *ngIf="clientesForm.get('razonSocial')?.invalid && (clientesForm.get('razonSocial')?.dirty || clientesForm.get('razonSocial')?.touched)" class="text-danger">
+                                            Falta rellenar razon social
+                                        </div>           
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>RFC</label>
+                                        <input type="text"  class="form-control" name="rfc" formControlName="rfc" placeholder="Contador">
+                                        <div *ngIf="clientesForm.get('rfc')?.invalid && (clientesForm.get('rfc')?.dirty || clientesForm.get('rfc')?.touched)" class="text-danger">
+                                            Falta rellenar razon rfc
+                                        </div>     
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">Teléfono</label>
+                                        <input type="text" class="form-control" name="telefono" [(ngModel)]="clientes.telefono" [ngModelOptions]="{standalone: true}" placeholder="1234os">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Pagos Con</label>
+                                        <input type="text"  class="form-control" name="pagosCon" [(ngModel)]="clientes.pagosCon" [ngModelOptions]="{standalone: true}" placeholder="Contador">
+                                    </div>
+                                </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Pedidos A</label>
+                                    <input type="text" class="form-control" name="pedidosA" [(ngModel)]="clientes.pedidosA" [ngModelOptions]="{standalone: true}" placeholder="1234os">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Recepción de Pedidos</label>
+                                    <input type="text" class="form-control" name="recepcionDePedidos" [(ngModel)]="clientes.recepcionDePedidos" [ngModelOptions]="{standalone: true}" placeholder="1234os">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-success" (click)="agregarCliente();" [disabled]="clientesForm.invalid"><i class="fa fa-check" ></i> Guardar </button> 
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>   

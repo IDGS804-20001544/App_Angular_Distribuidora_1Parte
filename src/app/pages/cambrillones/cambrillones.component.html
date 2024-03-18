@@ -1,0 +1,109 @@
+<div class="page-wrapper">
+    <div class="container-fluid">            
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex animated fadeIn">
+                            <div class="mr-auto">
+                                <div class="form-group">                                  
+                                    <h3 class="text-themecolor">Datos de Cambrillones</h3>
+                                </div>
+                            </div>
+                            <div class="ml-auto">
+                                <div class="form-group">
+                                    <input id="demo-input-search2" type="text" placeholder="Buscar por nombre" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="table-responsive animated fadeInDown">
+                            <table class="table full-color-table full-primary-table hover-table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Nombre</th>
+                                        <th>Horma</th>
+                                        <th>Editar</th>
+                                        <th>Eliminar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let datos of cambrillones">
+                                        <td>{{datos.id}}</td>
+                                        <td>{{datos.nombre}}</td>
+                                        <td>{{datos.horma}}</td>
+                                        <td> 
+                                            <a (click)="seleccionarCambrillon(datos.id);" class="btn btn-warning" data-toggle="modal" data-target=".example2-modal-lg">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                        </td>
+                                        <td> 
+                                            <a (click)="eliminarCambrillon(datos.id);" class="btn btn-success">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                        </td>
+                                    </tr>                                        
+                                </tbody>
+                            </table>
+                        </div>                            
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="modal fade example2-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="myLargeModalLabel">Modificar datos del cambrillón</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            </div>
+                            <div class="card">
+                                <form>
+                                    <div class="card-body">
+                                        <div class="form-body">
+                                            <div class="row p-t-20">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="control-label">Nombre</label>
+                                                        <input type="text"  class="form-control" name="nombre" [(ngModel)]="cambrillon.nombre" placeholder="Brenda Torres" >
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="control-label">Horma</label>
+                                                        <select class="form-control" name="horma_id" [(ngModel)]="cambrillones.horma_id">
+                                                            <option value="" disabled >Seleccione una horma</option>
+                                                            <option *ngFor="let datos of hormas" value="{{datos.id}}">{{datos.nombre}}</option>
+                                                    </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <input type="text"  class="form-control" name="id" [(ngModel)]="cambrillon.id" placeholder="1" hidden>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-actions">
+                                            <button class="btn btn-success" (click)="editarCambrillon();"> <i class="fa fa-check" ></i> Guardar </button> 
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
